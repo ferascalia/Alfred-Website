@@ -30,7 +30,7 @@ function ProblemSection({ copy }) {
 
       <FadeIn y={40}>
         <h2 style={{
-          font: "800 clamp(48px, 12vw, 160px)/0.95 var(--font-sans)",
+          font: "800 clamp(36px, 7vw, 100px)/0.95 var(--font-sans)",
           color: "var(--accent)",
           letterSpacing: "-0.04em",
           textTransform: "uppercase",
@@ -80,7 +80,7 @@ function MeetAlfredSection({ copy }) {
           </FadeIn>
           <FadeIn y={40}>
             <h2 style={{
-              font: "800 clamp(40px, 8vw, 100px)/0.95 var(--font-sans)",
+              font: "800 clamp(36px, 7vw, 100px)/0.95 var(--font-sans)",
               color: "var(--accent)",
               letterSpacing: "-0.04em",
               textTransform: "uppercase",
@@ -282,7 +282,7 @@ function FeaturesSection({ copy }) {
           </FadeIn>
           <FadeIn y={40}>
             <h2 style={{
-              font: "800 clamp(48px, 12vw, 160px)/0.95 var(--font-sans)",
+              font: "800 clamp(36px, 7vw, 100px)/0.95 var(--font-sans)",
               color: "var(--accent)",
               letterSpacing: "-0.04em",
               textTransform: "uppercase",
@@ -463,7 +463,7 @@ function UseCasesSection({ copy }) {
           </FadeIn>
           <FadeIn y={40}>
             <h2 style={{
-              font: "800 clamp(48px, 12vw, 160px)/0.95 var(--font-sans)",
+              font: "800 clamp(36px, 7vw, 100px)/0.95 var(--font-sans)",
               color: "var(--accent)",
               letterSpacing: "-0.04em",
               textTransform: "uppercase",

@@ -84,9 +84,9 @@ function HeroSection({ copy }) {
           </FadeIn>
 
           <FadeIn delay={0.15} y={40}>
-            <div style={{ overflow: "hidden" }}>
+            <div>
               <h1 style={{
-                font: "800 clamp(56px, 9vw, 132px)/0.9 var(--font-sans)",
+                font: "800 clamp(32px, 4vw, 68px)/0.95 var(--font-sans)",
                 color: "var(--accent)",
                 letterSpacing: "-0.04em",
                 textTransform: "uppercase",
