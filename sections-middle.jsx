@@ -342,12 +342,14 @@ function UseCaseCard({ card, index, total }) {
     };
   }, [targetScale]);
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
-    <div ref={containerRef} style={{ height: "85vh", position: "relative" }}>
+    <div ref={containerRef} style={{ height: isMobile ? "auto" : "85vh", position: "relative", marginBottom: isMobile ? 24 : 0 }}>
       <div style={{
-        position: "sticky",
-        top: `${96 + index * 28}px`,
-        transform: `scale(${scale})`,
+        position: isMobile ? "relative" : "sticky",
+        top: isMobile ? "auto" : `${96 + index * 28}px`,
+        transform: isMobile ? "none" : `scale(${scale})`,
         transformOrigin: "top center",
         transition: "transform 80ms linear",
       }}>

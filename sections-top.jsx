@@ -14,6 +14,10 @@ function LangToggle({ lang, setLang }) {
 
 /* ---------- Nav ---------- */
 function Nav({ lang, setLang, copy }) {
+  const [menuOpen, setMenuOpen] = _us1(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <FadeIn as="nav" y={-20} duration={0.6} className="alf-nav">
       <div className="alf-nav-inner">
@@ -21,15 +25,30 @@ function Nav({ lang, setLang, copy }) {
           <div className="alf-brand-mark" />
           <div className="alf-brand-word">Alfred</div>
         </a>
-        <div className="nav-links">
-          <a href="#meet" className="nav-link">{copy.nav.about}</a>
-          <a href="#features" className="nav-link">{copy.nav.features}</a>
-          <a href="#join" className="nav-link">{copy.nav.earlyAccess}</a>
-          <a href="#join" className="btn btn-primary" style={{ padding: "10px 18px", fontSize: 13 }}>
+
+        <div className={"nav-overlay" + (menuOpen ? " open" : "")} onClick={closeMenu} />
+
+        <div className={"nav-links" + (menuOpen ? " open" : "")}>
+          <a href="#meet" className="nav-link" onClick={closeMenu}>{copy.nav.about}</a>
+          <a href="#features" className="nav-link" onClick={closeMenu}>{copy.nav.features}</a>
+          <a href="#join" className="nav-link" onClick={closeMenu}>{copy.nav.earlyAccess}</a>
+          <a href="#join" className="btn btn-primary" style={{ padding: "10px 18px", fontSize: 13 }} onClick={closeMenu}>
             {copy.nav.cta}
           </a>
           <LangToggle lang={lang} setLang={setLang} />
         </div>
+
+        <button
+          className="nav-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+        >
+          {menuOpen
+            ? <i data-lucide="x" style={{ width: 24, height: 24 }} />
+            : <i data-lucide="menu" style={{ width: 24, height: 24 }} />
+          }
+        </button>
       </div>
     </FadeIn>
   );
@@ -85,13 +104,12 @@ function HeroSection({ copy }) {
 
           <FadeIn delay={0.15} y={40}>
             <div>
-              <h1 style={{
-                font: "800 clamp(32px, 4vw, 68px)/0.95 var(--font-sans)",
+              <h1 className="hero-h1" style={{
+                font: "800 clamp(28px, 5.5vw, 68px)/0.95 var(--font-sans)",
                 color: "var(--accent)",
                 letterSpacing: "-0.04em",
                 textTransform: "uppercase",
                 margin: "20px 0 0",
-                whiteSpace: "nowrap",
               }}>
                 <span style={{ display: "block" }}>{copy.hero.h1Line1}</span>
                 <span style={{ display: "block", color: "var(--fg-1)" }}>{copy.hero.h1Line2}</span>
@@ -149,8 +167,18 @@ function HeroSection({ copy }) {
             left: 50% !important;
             right: auto !important;
             transform: translate(-50%, -50%) !important;
-            opacity: 0.28;
+            opacity: 0.18;
             z-index: 0 !important;
+            width: clamp(220px, 50vw, 360px) !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-portrait-wrap {
+            width: 200px !important;
+            opacity: 0.12;
+          }
+          .hero-h1 {
+            font-size: clamp(24px, 8vw, 42px) !important;
           }
         }
       `}</style>
@@ -195,11 +223,11 @@ function MarqueeSection({ copy }) {
 
       {/* Edge fades */}
       <div style={{
-        position: "absolute", left: 0, top: 0, bottom: 0, width: 120,
+        position: "absolute", left: 0, top: 0, bottom: 0, width: "clamp(40px, 10vw, 120px)",
         background: "linear-gradient(90deg, var(--bg-0), transparent)", pointerEvents: "none", zIndex: 2,
       }} />
       <div style={{
-        position: "absolute", right: 0, top: 0, bottom: 0, width: 120,
+        position: "absolute", right: 0, top: 0, bottom: 0, width: "clamp(40px, 10vw, 120px)",
         background: "linear-gradient(-90deg, var(--bg-0), transparent)", pointerEvents: "none", zIndex: 2,
       }} />
     </section>
